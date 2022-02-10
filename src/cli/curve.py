@@ -11,7 +11,7 @@ def fraction_generator(args):
 
 
 def main():
-	parser = ArgumentParser(description="This program will generate beautiful curves form numbers")
+	parser = ArgumentParser(description="This program will generate beautiful curves from numbers")
 	parser.add_argument(
 		"-m", 
 		"--max", 
@@ -33,11 +33,27 @@ def main():
 	)
 	fraction_parser.add_argument("n", type=int, help="The intger n that will generate the fraction 1/n")
 
+	# File parser
+	file_parser = subparsers.add_parser(
+		"file", 
+		help="Read digits from a file"
+	)
+
+	# Random parser
+	random_parser = subparsers.add_parser(
+		"random",
+		help="Random walk"
+	)
+
 	# Parse the args
 	args = parser.parse_args()
 
 	if args.prog == "fraction":
 		generator = fraction_generator(args)
+	elif args.prog == "file":
+		raise NotImplementedError
+	elif args.prog == "random":
+		raise NotImplementedError
 
 	step = ConstantStep(10)
 	curve = CurveGenerator(generator, step)
