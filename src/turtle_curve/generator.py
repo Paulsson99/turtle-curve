@@ -17,7 +17,7 @@ class NumberGenerator(ABC):
 class FractionGenerator(NumberGenerator):
 	'''Generate every digit in the fraction 1/n'''
 
-	def __init__(self, n: int, max_iter=10_000):
+	def __init__(self, n: int, max_iter=1000):
 		self.n = n
 		self.max_iter = max_iter
 
